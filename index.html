@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="classical">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KARTHIKEYA — Divine Indian Virtual Piano</title>
+  <meta name="description"
+    content="KARTHIKEYA — An interactive virtual Indian harmonium/piano. Play classical ragas and fusion melodies using your keyboard or mouse." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=IM+Fell+English:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-mode="classical">
+
+  <!-- ═══════════════════ TOP BAR ═══════════════════ -->
+  <div class="top-bar">
+    <!-- Particle canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header Card -->
+    <div class="header-card">
+      <h1 class="app-title">
+        <span class="title-icon classical-icon">🎵</span>
+        <span class="title-icon fusion-icon">🎸</span>
+        <span class="title-text" id="appTitle">KARTHIKEYA</span>
+      </h1>
+      <p class="app-subtitle" id="appSubtitle">
+        <span class="classical-text">"Divine Melodies • Indian Classical • Sacred Sounds"</span>
+        <span class="fusion-text">"Modern India • Electronic Beats • Fusion Vibes"</span>
+      </p>
+      <div class="subtitle-dots">
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+      </div>
+    </div>
+
+    <!-- Mode Toggle -->
+    <div class="mode-toggle" id="modeToggle">
+      <button class="mode-btn active" id="btnClassical" onclick="setMode('classical')">
+        🎵 Classical
+      </button>
+      <button class="mode-btn" id="btnFusion" onclick="setMode('fusion')">
+        ⚡ Fusion
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ INSTRUMENT INFO ═══════════════════ -->
+  <div class="instrument-info">
+    <div class="instrument-badge">
+      <span class="classical-text">✨ Divine Indian Classical Instrument ✨</span>
+      <span class="fusion-text">⚡ Indian Electronic Fusion ⚡</span>
+    </div>
+    <p class="collection-text">
+      <span class="classical-text">
+        <strong>Sacred Collection:</strong> QWERTY keyboard keys for classical playing<br />
+        White keys: Q E T Y I P S D G J K Z C B N &nbsp;|&nbsp; Black keys: W R U O A F H L X V
+      </span>
+      <span class="fusion-text">
+        <strong>Modern Collection:</strong> QWERTY keyboard keys for fusion playing<br />
+        White keys: Q E T Y I P S D G J K Z C B N &nbsp;|&nbsp; Black keys: W R U O A F H L X V
+      </span>
+    </p>
+  </div>
+
+  <!-- ═══════════════════ PIANO INSTRUMENT ═══════════════════ -->
+  <div class="instrument-wrapper">
+    <!-- Instrument name label (inside frame, above keys) -->
+    <div class="instrument-name-bar">
+      <!-- Classical: pill-shaped gold label -->
+      <div class="instrument-label classical-label">
+        <span>KARTHIKEYA CLASSICAL</span>
+      </div>
+      <!-- Fusion: recording-style label -->
+      <div class="instrument-label fusion-label">
+        <span class="rec-dot"></span>
+        <span>REC &nbsp; KARTHIKEYA-FX</span>
+        <div class="fusion-indicators">
+          <span class="ind orange-ind"></span>
+          <span class="ind green-ind"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Piano Keys -->
+    <div class="piano-keyboard" id="pianoKeyboard">
+      <!-- Keys injected by JS -->
+    </div>
+
+    <!-- Bottom decorative banner -->
+    <div class="instrument-footer">
+      <span class="classical-text">✨ Handcrafted in India ✨</span>
+      <span class="fusion-text">⚡ KARTHIKEYA FUSION DIGITAL ⚡</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PLAYING GUIDE ═══════════════════ -->
+  <div class="guide-section">
+    <!-- Title -->
+    <h2 class="guide-title">
+      <span class="guide-clef">𝄞</span>
+      <span class="classical-text">Classical Playing Guide</span>
+      <span class="fusion-text">Fusion Control Manual</span>
+      <span class="guide-clef">𝄞</span>
+    </h2>
+
+    <!-- Info cards -->
+    <div class="guide-cards">
+      <div class="guide-card">
+        <div class="card-icon">
+          <span class="classical-text">👆</span>
+          <span class="fusion-text">🖱️</span>
+        </div>
+        <h3 class="card-title">
+          <span class="classical-text">Touch Method:</span>
+          <span class="fusion-text">Touch Interface:</span>
+        </h3>
+        <p class="card-desc">
+          <span class="classical-text">Gentle click on any key for divine tone</span>
+          <span class="fusion-text">Click any key for fusion sound</span>
+        </p>
+      </div>
+      <div class="guide-card">
+        <div class="card-icon">⌨️</div>
+        <h3 class="card-title">
+          <span class="classical-text">Keyboard Artistry:</span>
+          <span class="fusion-text">Digital Mapping:</span>
+        </h3>
+        <p class="card-desc">
+          <span class="classical-text">Use the sacred letter mapping system</span>
+          <span class="fusion-text">Use keyboard for modern control</span>
+        </p>
+      </div>
+      <div class="guide-card">
+        <div class="card-icon">🎵</div>
+        <h3 class="card-title">
+          <span class="classical-text">Tonal Range:</span>
+          <span class="fusion-text">Fusion Range:</span>
+        </h3>
+        <p class="card-desc">
+          <span class="classical-text">2 magnificent octaves (C4 to C6)</span>
+          <span class="fusion-text">2 octaves electronic spectrum</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Register info -->
+    <div class="register-row">
+      <div class="register-box lower">
+        <strong>
+          <span class="classical-text">Lower Register (C4–B4):</span>
+          <span class="fusion-text">Lower Bank (C4–B4):</span>
+        </strong>
+        <span>White: Q E T Y I P S &nbsp;|&nbsp; Black: W R U O A</span>
+      </div>
+      <div class="register-box upper">
+        <strong>
+          <span class="classical-text">Upper Register (C5–C6):</span>
+          <span class="fusion-text">Upper Bank (C5–C6):</span>
+        </strong>
+        <span>White: D G J K Z C B N &nbsp;|&nbsp; Black: F H L X V</span>
+      </div>
+    </div>
+
+    <!-- Preset melodies -->
+    <div class="melodies-section">
+      <h3 class="melodies-title">
+        <span class="classical-text">🎵 Classical Ragas &amp; Melodies — Click to hear a full raga:</span>
+        <span class="fusion-text">🎸 Fusion Melodies — Click to experience:</span>
+      </h3>
+      <div class="melodies-row">
+        <div class="melody-block">
+          <div class="melody-label">
+            <span class="classical-text">Raga Bhupali — Pentatonic bliss ✦</span>
+            <span class="fusion-text">Bhupali Fusion — Electronic pulse ⚡</span>
+          </div>
+          <button class="melody-seq" id="melody1" onclick="playPreset(0)">▶ Raga Bhupali</button>
+        </div>
+        <div class="melody-block">
+          <div class="melody-label">
+            <span class="classical-text">Raga Yaman — Evening serenity ✦</span>
+            <span class="fusion-text">Yaman Fusion — Night groove ⚡</span>
+          </div>
+          <button class="melody-seq" id="melody2" onclick="playPreset(1)">▶ Raga Yaman</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer tagline -->
+    <p class="guide-footer">
+      <span class="classical-text">"Where Music Meets Indian Heritage" • Sacred Sounds • Divine Virtual
+        Instruments</span>
+      <span class="fusion-text">"Modern India Sound" • Digital Era • Fusion Music Production</span>
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
